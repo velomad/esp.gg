@@ -22,7 +22,6 @@ const Home = () => {
   return (
     <div>
       <Rewards data={rewards} />
-      <div className="flex justify-end">yest</div>
     </div>
   );
 };

@@ -13,8 +13,8 @@ const Rewards = ({ data }) => {
   };
 
   return (
-    <div className="flex justify-between items-center p-4">
-      <div>
+    <div className="grid grid-cols-8 items-center px-4">
+      <div className="col-span-5">
         <Typography>{data[activeSlideIndex].name}</Typography>
         <Typography>{data[activeSlideIndex].coins}</Typography>
         <div>
@@ -22,9 +22,9 @@ const Rewards = ({ data }) => {
             progressPercent={data[activeSlideIndex].progress}
           />
         </div>
-        <Typography>{data[activeSlideIndex].coinsToGo} coins to go</Typography>
+        <Typography>{data[activeSlideIndex].coinsToGo}Coins to go</Typography>
       </div>
-      <div>
+      <div className="col-span-3">
         <Swiper handleSlideChange={handleChange} slides={data} />
       </div>
     </div>
