@@ -5,6 +5,7 @@ import {
   closestCenter,
   KeyboardSensor,
   PointerSensor,
+  TouchSensor,
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
@@ -16,28 +17,35 @@ import {
 } from "@dnd-kit/sortable";
 
 import { SortableItem } from "./sortable-item";
+import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 
 const SortableList = () => {
-  const [items, setItems] = useState([1, 2, 3]);
+  const [items, setItems] = useState(
+    Array.from({ length: 10 }, (_, i) => i + 1)
+  );
   const sensors = useSensors(
-    useSensor(PointerSensor),
+    // useSensor(PointerSensor),
+    useSensor(TouchSensor),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
     })
   );
 
   return (
-    <DndContext
-      sensors={sensors}
-      collisionDetection={closestCenter}
-      onDragEnd={handleDragEnd}
-    >
-      <SortableContext items={items} strategy={verticalListSortingStrategy}>
-        {items.map((id) => (
-          <SortableItem key={id} id={id} />
-        ))}
-      </SortableContext>
-    </DndContext>
+    <div className="p-4">
+      <DndContext
+        sensors={sensors}
+        collisionDetection={closestCenter}
+        onDragEnd={handleDragEnd}
+        modifiers={[restrictToVerticalAxis]}
+      >
+        <SortableContext items={items} strategy={verticalListSortingStrategy}>
+          {items.map((id) => (
+            <SortableItem key={id} id={id} />
+          ))}
+        </SortableContext>
+      </DndContext>
+    </div>
   );
 
   function handleDragEnd(event) {

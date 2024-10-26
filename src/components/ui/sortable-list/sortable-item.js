@@ -13,8 +13,13 @@ export function SortableItem(props) {
   };
 
   return (
-    <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
-      Hii
+    <div
+      ref={setNodeRef}
+      style={style}
+      {...workers}
+      className="h-20 my-2 bg-blue-200 flex items-center justify-center"
+    >
+      <div className="text-4xl text-gray-600 font-extrabold">{props.id}</div>
     </div>
   );
 }
