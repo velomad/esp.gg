@@ -24,7 +24,6 @@ const SortableList = () => {
     Array.from({ length: 10 }, (_, i) => i + 1)
   );
   const sensors = useSensors(
-    // useSensor(PointerSensor),
     useSensor(TouchSensor),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,

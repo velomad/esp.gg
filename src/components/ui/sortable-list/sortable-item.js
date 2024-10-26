@@ -12,6 +12,11 @@ export function SortableItem(props) {
     transition,
   };
 
+  const workers = {
+    ...attributes,
+    ...listeners,
+  };
+
   return (
     <div
       ref={setNodeRef}
