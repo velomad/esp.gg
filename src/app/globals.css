@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes swapAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.lifted {
+  transform: scale(1.05); /* Slightly enlarge */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for lift effect */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth lifting */
+}
+
+div[style*="transform"] {
+  transition: transform 0.3s ease-in-out; /* Slide animation for swapping */
+}
